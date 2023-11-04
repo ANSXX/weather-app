@@ -11,8 +11,8 @@ body
 }
 .card
 {
-    width: 80%;
-    max-width: 470px;
+    width: 75%;
+    max-width: 450px;
     color: #fff;
     margin: 100px auto 0;
     border: 2px solid #e9e3e3;
@@ -110,4 +110,11 @@ body
     text-align: center;
     font-size:x-large;
     font-weight: 500;
+}
+.design
+{
+    color: #e9e3e3;
+    text-align:center;
+    margin-top: 170px;
+    padding: 5px 5px;
 }

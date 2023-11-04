@@ -19,6 +19,7 @@ body
     border-radius: 20px;
     padding: 40px 35px;
     text-align: center;
+    min-width: 320px;
 }
 .search
 {

@@ -43,7 +43,19 @@
             <p>Designed By Himanshu</p>
         </div>
     </div> 
-
+    <footer>
+        <div id="rate" class="rating">
+            <span class="fa fa-star" data-value="1"></span>
+            <span class="fa fa-star" data-value="2"></span>
+            <span class="fa fa-star" data-value="3"></span>
+            <span class="fa fa-star" data-value="4"></span>
+            <span class="fa fa-star" data-value="5"></span>
+            <div>
+                <p class="rate">Average Rating: <span id="average-rating">4.0</span> / 5</p>
+                <!-- <p class="rate">Your Rating: <span id="user-rating">0</span></p> -->
+            </div>
+        </div>        
+    </footer>
 
     <script>
 
@@ -76,7 +88,6 @@
             else
             {
             var data = await response.json();
-            // console.log(data);
             document.querySelector(".city").innerHTML = data.name;
             document.querySelector(".temp").innerHTML = Math.round(data.main.temp)+"°C";
             document.querySelector(".humidity").innerHTML = data.main.humidity+"%";
@@ -111,6 +122,57 @@
             checkWeather(searchBox.value);
 
         })
+        const stars = document.querySelectorAll('.fa-star');
+const averageRatingElement = document.getElementById('average-rating');
+const userRatingElement = document.getElementById('user-rating');
+
+let ratings = [];
+let hasRated = false; // Flag to track if the user has already rated
+
+stars.forEach((star, index) => {
+    star.addEventListener('mouseover', () => {
+        if (!hasRated) {
+            highlightStars(index);
+        }
+    });
+
+    star.addEventListener('mouseout', () => {
+        if (!hasRated) {
+            highlightStars(getCurrentRating());
+        }
+    });
+
+    star.addEventListener('click', () => {
+        if (!hasRated) {
+            const rating = index + 1;
+            ratings.push(rating);
+            updateAverageRating();
+            highlightStars(rating - 1);
+            userRatingElement.textContent = rating;
+            hasRated = true; // Set flag to true to prevent further ratings
+        }
+    });
+});
+
+function highlightStars(index) {
+    stars.forEach((star, i) => star.classList.toggle('filled', i <= index));
+}
+
+function updateAverageRating() {
+    if (ratings.length === 0) {
+        averageRatingElement.textContent = '0.0';
+        return;
+    }
+    const sum = ratings.reduce((a, b) => a + b, 0);
+    const average = (sum / ratings.length).toFixed(1);
+    averageRatingElement.textContent = average;
+}
+
+function getCurrentRating() {
+    const currentRating = parseInt(userRatingElement.textContent, 10);
+    return isNaN(currentRating) ? -1 : currentRating - 1;
+}
+
 
     </script>
 </body>

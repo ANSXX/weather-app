@@ -117,3 +117,36 @@ body
     text-align:center;
     padding: 5px 5px;
 }
+#rate {
+    padding: 10px;
+    background-color: #333;
+    color: #e9e3e3;
+    border-radius: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0; 
+    left: 0; 
+    width: 100%;
+    z-index: 1000;
+}
+
+.rating {
+    display: inline-block;
+}
+
+.rating .fa-star {
+    font-size: 24px;
+    color: whitesmoke;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.rating .fa-star.filled {
+    color: orange;
+}
+
+.rate {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #e9e3e3;
+}

@@ -111,15 +111,8 @@ body
     font-size:x-large;
     font-weight: 500;
 }
-.design
-{
-    color: #e9e3e3;
-    text-align:center;
-    padding: 5px 5px;
-}
 #rate {
     padding: 10px;
-    background-color: #333;
     color: #e9e3e3;
     border-radius: 10px;
     text-align: center;
@@ -149,4 +142,8 @@ body
     margin-top: 10px;
     font-size: 16px;
     color: #e9e3e3;
+}
+.design{
+    color: rgb(133, 133, 133);
+    font-size: 12px;
 }

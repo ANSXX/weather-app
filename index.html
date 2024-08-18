@@ -48,7 +48,7 @@
             <span class="fa fa-star" data-value="4"></span>
             <span class="fa fa-star" data-value="5"></span>
             <div>
-                <p class="rate">Average Rating: <span id="average-rating">5.0</span> / 5</p>
+                <p class="rate">Average Rating: <span id="average-rating">4.5</span> / 5</p>
                 <p class="design">Designed By <a class="design" href="https://www.instagram.com/areehimanshu?igsh=aTAwb29meXV1Ym04" target="_blank">Himanshu</a></p>
             </div>
         </div>        
@@ -157,7 +157,7 @@ function highlightStars(index) {
 
 function updateAverageRating() {
     if (ratings.length === 0) {
-        averageRatingElement.textContent = '0.0';
+        averageRatingElement.textContent = '4.0';
         return;
     }
     const sum = ratings.reduce((a, b) => a + b, 0);

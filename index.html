@@ -127,18 +127,6 @@ let ratings = [];
 let hasRated = false; // Flag to track if the user has already rated
 
 stars.forEach((star, index) => {
-    star.addEventListener('mouseover', () => {
-        if (!hasRated) {
-            highlightStars(index);
-        }
-    });
-
-    star.addEventListener('mouseout', () => {
-        if (!hasRated) {
-            highlightStars(getCurrentRating());
-        }
-    });
-
     star.addEventListener('click', () => {
         if (!hasRated) {
             const rating = index + 1;
@@ -152,22 +140,23 @@ stars.forEach((star, index) => {
 });
 
 function highlightStars(index) {
-    stars.forEach((star, i) => star.classList.toggle('filled', i <= index));
+    stars.forEach((star, i) => {
+        if (i <= index) {
+            star.classList.add('filled');
+        } else {
+            star.classList.remove('filled');
+        }
+    });
 }
 
 function updateAverageRating() {
     if (ratings.length === 0) {
-        averageRatingElement.textContent = '4.0';
+        averageRatingElement.textContent = '0.0';
         return;
     }
     const sum = ratings.reduce((a, b) => a + b, 0);
     const average = (sum / ratings.length).toFixed(1);
     averageRatingElement.textContent = average;
-}
-
-function getCurrentRating() {
-    const currentRating = parseInt(userRatingElement.textContent, 10);
-    return isNaN(currentRating) ? -1 : currentRating - 1;
 }
 
 
